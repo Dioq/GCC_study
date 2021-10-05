@@ -1,6 +1,6 @@
 # GCC Compiler
 
-Linker Options :
+## Linker Options :
 -o   						编译后输出文件名  
 -g						在目标文件中添加调试信息，便于gdb调试或objdump反汇编  
 -static     					采用静态连接的方式连接程序  
