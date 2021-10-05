@@ -7,13 +7,13 @@ Linker Options :
 -shared      					生成可共享的被其他程序连接的目标模块
 
 
-# 动态连接方式生成可执行程序
+### 动态连接方式生成可执行程序
 gcc x1.c x2.c -o xxx	
-# 静态连接的可执行程序
+### 静态连接的可执行程序
 gcc -static x1.c x2.c -o xxx
 
-# 交叉编译使用 Linaro
-# linux x86平台下 编译成 arm64 下的可执行文件。(由于arm平台上可能没有对应的动态链接库,所以采用静态编译)
+### 交叉编译使用 Linaro
+### linux x86平台下 编译成 arm64 下的可执行文件。(由于arm平台上可能没有对应的动态链接库,所以采用静态编译)
 arm-linux-gnueabihf-gcc -static x1.c x2.c -o xxx
 
 
