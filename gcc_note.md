@@ -1,12 +1,12 @@
 # GCC Compiler
 
 Linker Options :  
--c                              生成中间态文件 xxx.o, xxx.o不关心彼此之间的联系
--o                              编译后输出文件位置和名称
--g                              在目标文件中添加调试信息，便于gdb调试或objdump反汇编
--static                         采用静态连接的方式连接程序
--shared                         生成可共享的被其他程序连接的目标模块                
--no-pie				不使用pie,确保生成的ELF文件 e_type 类型为 ET_EXEC
+-c                              生成中间态文件 xxx.o, xxx.o不关心彼此之间的联系  
+-o                              编译后输出文件位置和名称  
+-g                              在目标文件中添加调试信息，便于gdb调试或objdump反汇编 
+-static                         采用静态连接的方式连接程序 
+-shared                         生成可共享的被其他程序连接的目标模块  
+-no-pie				不使用pie,确保生成的ELF文件 e_type 类型为 ET_EXEC  
 
 
 ### 生成中间态 .o 文件
