@@ -1,6 +1,6 @@
 # GCC Compiler
 
-Linker Options :
+Linker Options :  
 -c                              生成中间态文件 xxx.o, xxx.o不关心彼此之间的联系
 -o                              编译后输出文件位置和名称
 -g                              在目标文件中添加调试信息，便于gdb调试或objdump反汇编
