@@ -1,16 +1,19 @@
 # GCC Compiler
 
 Linker Options :
--c                              生成中间态文件 xxx.o, xxx.o不关心彼此之间的联系
 -o                              编译后输出文件位置和名称
 -g                              在目标文件中添加调试信息，便于gdb调试或objdump反汇编
--static                         采用静态连接的方式连接程序
--shared                         生成可共享的被其他程序连接的目标模块                
 -no-pie				不使用pie,确保生成的ELF文件 e_type 类型为 ET_EXEC
+-L  				指定搜寻库的目录
+      				如指定当前目录 gcc -L .
+-l    				指定要链接的库的名称
+      				加入库的名称是libmylib.a，则gcc -l mylib，即去头去尾。
+--static  			组织在链接时使用动态库
+--shared 			生成动态库
+--static-libgcc  		链接静态libgcc库
+--shared-libgcc 		链接动态libgcc库 
+-nostdinci			使编译器不再系统缺省的头文件目录里面找头文件,一般和-L联合使用,明确限定头文件的位置。
 
-
-### 生成中间态 .o 文件
-gcc -c xxx.c -o xxx.o
 
 ### 动态连接方式生成可执行程序
 gcc x1.c x2.c -o xxx    
@@ -21,6 +24,21 @@ gcc -static x1.c x2.c -o xxx
 ### linux x86平台下 编译成 arm64 下的可执行文件。(由于arm平台上可能没有对应的动态链接库,所以采用静态编译)
 arm-linux-gnueabihf-gcc -static x1.c x2.c -o xxx
 
+
+\\ #include <> 直接到系统指定的某些目录中去找某些头文件。
+\\ #include "" 先到源文件所在文件夹去找，然后再到系统指定的某些目录中去找某些头文件。
+gcc指定头文件的三种情况：
+1.会在默认情况下指定到/usr/include文件夹(更深层次的是一个相对路径，gcc可执行程序的路径是/usr/bin/gcc，那么它在实际工作时指定头文件是一种相对路径方法，换算成绝对路径就是加上/usr/include，如#include 就是包含/usr/include/stdio.h)
+2.GCC还使用了-L指定路径的方式，即
+gcc -L 头文件所在文件夹(绝对路径或相对路径均可) 源文件
+举一个例子：
+设当前路径为/root/test,其结构如下：
+include_test.c
+include/include_test.h
+有两种方法访问到include_test.h。
+1. include_test.c中#include “include/include_test.h”然后gcc include_test.c即可
+2. include_test.c中#include 或者#include 然后gcc –L include include_test.c也可
+3. 参数：-nostdinc使编译器不再系统缺省的头文件目录里面找头文件,一般和-L联合使用,明确限定头文件的位置。
 
 
 ## 编译相关的知识
