@@ -23,6 +23,8 @@ gcc -static x1.c x2.c -o xxx
 ### 交叉编译使用 Linaro
 ### linux x86平台下 编译成 arm64 下的可执行文件。(由于arm平台上可能没有对应的动态链接库,所以采用静态编译)
 arm-linux-gnueabihf-gcc -static x1.c x2.c -o xxx
+or
+aarch64-linux-gnu-gcc x1.c x2.c -o xxx
 
 
 \\ #include <> 直接到系统指定的某些目录中去找某些头文件。
