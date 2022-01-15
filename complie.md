@@ -28,6 +28,7 @@ gcc -S xxx.i -o xxx.s
 
 gcc -c xxx.s -o xxx.o
 
+注：每一个 .c 文件 只能生成一个 .o 文件，不存在多个 .c 生成 一个 .o 文件的情况
 
 四、链接
 生成.exe文件 也是ELF文件，有头和.data、.text段等
